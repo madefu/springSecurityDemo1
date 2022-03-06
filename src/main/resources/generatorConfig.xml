@@ -1,0 +1,73 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+  "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+  <!-- Property File Containing Secrets (Must Remain in Local Machines Only) -->
+  <properties resource="db-local.properties"/>
+
+<!--  <classPathEntry location="/Users/madefu/IdeaProjects/springSecurityDemo1/mybatis-generator-plugin/target/mybatis-generator-plugin-0.0.1-SNAPSHOT.jar"/>-->
+
+  <context id="PostgreSQL" targetRuntime="MyBatis3">
+    <!-- Plugins -->
+    <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"/>
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+<!--    <plugin type="com.madefu.spd1.mybatis.generator.plugins.PGArrayOperatorsPlugin" />-->
+    <plugin type="com.madefu.mybatisgeneratorplugin.PGArrayOperatorsPlugin"/>
+
+
+    <!-- Comment Generator Configuration -->
+    <commentGenerator>
+      <property name="suppressAllComments" value="true"/>
+    </commentGenerator>
+
+    <!-- JDBC Connection Configuration -->
+    <jdbcConnection driverClass="${jdbc.driverClass}"
+                    connectionURL="${jdbc.connectionURL}"
+                    userId="${jdbc.userId}"
+                    password="${jdbc.password}">
+    </jdbcConnection>
+
+    <!-- Java Model Generator Configuration -->
+    <javaModelGenerator targetPackage="com.madefu.spd1.mybatis.generator.persistobj"
+                        targetProject="MAVEN">
+      <!--<property name="enableSubPackages" value="true"/>-->
+    </javaModelGenerator>
+
+    <!-- SQL Mapper Configuration -->
+    <sqlMapGenerator targetPackage="mapper"
+                     targetProject="MAVEN">
+      <!--<property name="enableSubPackages" value="true"/>-->
+    </sqlMapGenerator>
+
+    <!-- Java Client Generator Configuration -->
+    <javaClientGenerator type="XMLMAPPER"
+                         targetPackage="com.madefu.spd1.mybatis.generator.mapper"
+                         targetProject="MAVEN">
+      <!--是否允许建立子包（对应MySql的scheme）-->
+      <property name="enableSubPackages" value="true"/>
+      <!--<property name="enableSubPackages" value="true"/>-->
+    </javaClientGenerator>
+
+    <!-- Tables Configuration -->
+    <table tableName="user" schema="test_v0" enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+      <columnOverride column="sex_enum"
+                      javaType="com.madefu.spd1.mybatis.generator.type.SexType"
+                      typeHandler="com.madefu.spd1.mybatis.generator.type.handler.SexTypeTypeHandler"/>
+      <columnOverride column="personal_Info"
+                      javaType="com.madefu.spd1.mybatis.generator.type.PersonInfoType"
+                      typeHandler="com.madefu.spd1.mybatis.generator.type.handler.PersonInfoTypeHandler"/>
+    </table>
+
+    <table tableName="user_detail" schema="test_v0" enableDeleteByPrimaryKey="false" enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+
+  </context>
+</generatorConfiguration>

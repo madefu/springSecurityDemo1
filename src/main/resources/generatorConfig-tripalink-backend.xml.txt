@@ -1,0 +1,135 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+  "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <!-- Property File Containing Secrets (Must Remain in Local Machines Only) -->
+  <properties resource="db.properties"/>
+
+  <context id="PostgreSQL" targetRuntime="MyBatis3">
+    <!-- Plugins -->
+    <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"/>
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+    <plugin type="com.madefu.spd1.mybatis.generator.plugins.PGArrayOperatorsPlugin"/>
+
+    <!-- Comment Generator Configuration -->
+    <commentGenerator>
+      <property name="suppressAllComments" value="false"/>
+    </commentGenerator>
+
+    <!-- JDBC Connection Configuration -->
+    <jdbcConnection driverClass="${jdbc.driverClass}"
+                    connectionURL="${jdbc.connectionURL}"
+                    userId="${jdbc.userId}"
+                    password="${jdbc.password}">
+    </jdbcConnection>
+
+    <!-- Java Model Generator Configuration -->
+    <javaModelGenerator targetPackage="com.madefu.spd1.mybatis.generator.persistobj"
+                        targetProject="MAVEN">
+      <!--<property name="enableSubPackages" value="true"/>-->
+    </javaModelGenerator>
+
+    <!-- SQL Mapper Configuration -->
+    <sqlMapGenerator targetPackage="mapper"
+                     targetProject="MAVEN">
+      <!--<property name="enableSubPackages" value="true"/>-->
+    </sqlMapGenerator>
+
+    <!-- Java Client Generator Configuration -->
+    <javaClientGenerator type="XMLMAPPER"
+                         targetPackage="com.madefu.spd1.mybatis.generator.mapper"
+                         targetProject="MAVEN">
+      <!--<property name="enableSubPackages" value="true"/>-->
+    </javaClientGenerator>
+
+    <!-- Tables Configuration -->
+    <table tableName="applicant_emergency_contact" schema="tripalink_v1" enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="applicant_income_info" schema="tripalink_v1" enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="applicant_residential_hist" schema="tripalink_v1" enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="application" schema="tripalink_v1" enableDeleteByPrimaryKey="false" enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="application_attachment" schema="tripalink_v1" enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="application_cosign_relp_mapping" schema="tripalink_v1" enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="bathroom" schema="tripalink_v1" enableDeleteByPrimaryKey="false" enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="bedroom" schema="tripalink_v1" enableDeleteByPrimaryKey="false" enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="community_amenity" schema="tripalink_v1" enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="furniture" schema="tripalink_v1" enableDeleteByPrimaryKey="false" enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="living_facility" schema="tripalink_v1" enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="parking_facility" schema="tripalink_v1" enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="prop_mgmt_media_material" schema="tripalink_v1" enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+    </table>
+    <table tableName="property" schema="tripalink_v1" enableDeleteByPrimaryKey="false" enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+      <columnOverride column="structure_types"
+                      javaType="com.madefu.spd1.mybatis.generator.type.PropStructType[]"
+                      typeHandler="com.madefu.spd1.mybatis.generator.type.handler.PropStructTypeArrayTypeHandler"/>
+      <columnOverride column="product_type"
+                      javaType="com.madefu.spd1.mybatis.generator.type.PropProdType"
+                      typeHandler="com.madefu.spd1.mybatis.generator.type.handler.PropProdTypeTypeHandler"/>
+    </table>
+    <table tableName="tripalink_user" schema="tripalink_v1" enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+      <columnOverride column="sex"
+                      javaType="com.madefu.spd1.mybatis.generator.type.SexType"
+                      typeHandler="com.madefu.spd1.mybatis.generator.type.handler.SexTypeTypeHandler"/>
+    </table>
+    <table tableName="unit" schema="tripalink_v1" enableDeleteByPrimaryKey="false" enableDeleteByExample="false">
+      <generatedKey column="id" sqlStatement="JDBC"/>
+      <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
+      <columnOverride column="windows"
+                      javaType="com.madefu.spd1.mybatis.generator.type.UnitWindowType[]"
+                      typeHandler="com.madefu.spd1.mybatis.generator.type.handler.UnitWinArrayTypeHandler"/>
+    </table>
+  </context>
+</generatorConfiguration>

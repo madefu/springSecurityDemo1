@@ -16,7 +16,7 @@
     <properties>
         <java.version>11</java.version>
         <!-- mybatis-generator -->
-        <mybatis.generator.version>1.4.0</mybatis.generator.version>
+        <mybatis.generator.version>1.4.1</mybatis.generator.version>
         <mybatis.generator.verbose>true</mybatis.generator.verbose>
         <mybatis.generator.includeAllDependencies>true</mybatis.generator.includeAllDependencies>
         <mybatis.generator.includeCompileDependencies>true</mybatis.generator.includeCompileDependencies>
@@ -25,38 +25,37 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.6.3</version>
+            <version>2.6.7</version>
         </dependency>
         <!--spring security-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <version>2.6.3</version>
+            <version>2.6.7</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <version>2.6.3</version>
-
+            <version>2.6.7</version>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
+            <version>1.18.24</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.6.3</version>
+            <version>2.6.7</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>5.3.15</version>
+            <version>5.3.20</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -72,7 +71,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.3.3</version>
+            <version>42.3.4</version>
         </dependency>
 
 
@@ -87,7 +86,7 @@
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
-            <version>1.4.0</version>
+            <version>1.4.1</version>
         </dependency>
 
         <!-- MyBatis  -->
@@ -98,18 +97,33 @@
         </dependency>
 
         <dependency>
-            <groupId>com.madefu</groupId>
-            <artifactId>spd1-mybatis-plugin</artifactId>
-            <version>0.0.1</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.13.3</version>
+            <scope>compile</scope>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.madefu</groupId>-->
+<!--            <artifactId>spd1-mybatis-plugin</artifactId>-->
+<!--            <version>0.0.1</version>-->
+<!--            <scope>system</scope>-->
+<!--            <systemPath>/Users/madefu/dev/repo/com/madefu/spd1-mybatis-plugin/0.0.1/spd1-mybatis-plugin-0.0.1.jar</systemPath>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
+                <!--
+                这里有个问题，使用这个插件打包出来的是springboot框架自己一套目录结构
+                包含：boot-info,meta-info,org/XXX/，等，
+                当作为jar希望被其他项目引用时，会导致对方引用不了jar中的类，
+                需要skip这个插件！
+                -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <skip>true</skip>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
@@ -130,7 +144,7 @@
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.4.0</version>
+                <version>1.3.7</version>
                 <configuration>
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>
@@ -140,12 +154,20 @@
 <!--                    <outputDirectory>/Users/madefu/IdeaProjects/mybatis-generator-output/</outputDirectory>-->
                 </configuration>
                 <dependencies>
-<!--                    <dependency>-->
-<!--                        <groupId>org.mybatis.generator</groupId>-->
-<!--                        <artifactId>mybatis-generator-core</artifactId>-->
-<!--                        <version>1.4.0</version>-->
-<!--                    </dependency>-->
 
+                    <dependency>
+                        <groupId>com.itfsw</groupId>
+                        <artifactId>mybatis-generator-plugin</artifactId>
+                        <version>1.3.10</version>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>com.madefu</groupId>
+                        <artifactId>spd1</artifactId>
+                        <version>0.0.1</version>
+<!--                        <scope>system</scope>-->
+<!--                        <systemPath>/Users/madefu/dev/repo/com/madefu/spd1/0.0.1/spd1-0.0.1.jar</systemPath>-->
+                    </dependency>
 
                     <dependency>
                         <groupId>org.apache.logging.log4j</groupId>
@@ -161,7 +183,7 @@
                 </dependencies>
             </plugin>
 
-            <!-- flatten-maven-plugin (for Cooperating with Apache Maven's CI-friendly Feature ) -->
+            <!-- flatten-maven-plugin (for Cooperating with Apache Maven's CI-friendly Feature )
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
@@ -187,7 +209,7 @@
                     </execution>
                 </executions>
             </plugin>
-
+-->
 
             <!-- 加密组件 -->
             <plugin>

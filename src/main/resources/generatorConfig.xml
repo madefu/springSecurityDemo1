@@ -14,8 +14,26 @@
     <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin"/>
     <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
     <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
-<!--    <plugin type="com.madefu.spd1.mybatis.generator.plugins.PGArrayOperatorsPlugin" />-->
-    <plugin type="com.madefu.mybatisgeneratorplugin.PGArrayOperatorsPlugin"/>
+
+
+    <!-- 存在即更新插件 -->
+<!--    <plugin type="com.itfsw.mybatis.generator.plugins.UpsertPlugin">-->
+<!--      &lt;!&ndash;-->
+<!--      支持upsertByExample，upsertByExampleSelective操作-->
+<!--      ！需开启allowMultiQueries=true多条sql提交操作，所以不建议使用！插件默认不开启-->
+<!--      &ndash;&gt;-->
+<!--      <property name="allowMultiQueries" value="false"/>-->
+<!--      &lt;!&ndash;-->
+<!--      开启批量功能，支持batchUpsert,batchUpsertWithBLOBs,batchUpserSelective-->
+<!--      ！这几个方法中无法支持IncrementsPlugin的方法！插件默认不开启-->
+<!--      &ndash;&gt;-->
+<!--      <property name="allowBatchUpsert" value="fasle"/>-->
+<!--    </plugin>-->
+
+
+    <plugin type="com.madefu.spd1.mybatis.generator.plugins.PGArrayOperatorsPlugin" />
+
+<!--    <plugin type="com.madefu.mybatisgeneratorplugin.PGArrayOperatorsPlugin"/>-->
 
 
     <!-- Comment Generator Configuration -->
@@ -52,8 +70,16 @@
     </javaClientGenerator>
 
     <!-- Tables Configuration -->
-    <table tableName="user" schema="test_v0" enableDeleteByPrimaryKey="false"
+    <table tableName="t_user" schema="public" enableDeleteByPrimaryKey="false"
            enableDeleteByExample="false">
+    </table>
+
+    <table tableName="t1" schema="test_v0" enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false">
+    </table>
+
+    <table tableName="t_user_account" schema="test_v0"  enableDeleteByPrimaryKey="false"
+           enableDeleteByExample="false" enableSelectByExample="true">
       <generatedKey column="id" sqlStatement="JDBC"/>
       <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
       <columnOverride column="sex_enum"
@@ -64,7 +90,8 @@
                       typeHandler="com.madefu.spd1.mybatis.generator.type.handler.PersonInfoTypeHandler"/>
     </table>
 
-    <table tableName="user_detail" schema="test_v0" enableDeleteByPrimaryKey="false" enableDeleteByExample="false">
+    <table tableName="t_user_account_detail" schema="test_v0" enableSelectByExample="true"
+           enableDeleteByPrimaryKey="false" enableDeleteByExample="false">
       <generatedKey column="id" sqlStatement="JDBC"/>
       <domainObjectRenamingRule searchString="^(.*)$" replaceString="$1PO"/>
     </table>

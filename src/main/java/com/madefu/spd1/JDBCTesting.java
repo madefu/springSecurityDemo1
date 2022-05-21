@@ -23,10 +23,29 @@ public class JDBCTesting{
 //                    "jdbc:postgresql:///postgres",
 //                    "defu_ma",
 //                    "sasa");
+//            connection = DriverManager.getConnection(
+//                    "jdbc:postgresql://localhost:5432/postgres",
+//                    "madefu",
+//                    "sasa");
+            /*
+            URL: tripalink-postgresql-dev.chrusssv7kt6.us-west-1.rds.amazonaws.com
+Username: tripalink_architect
+Password: 9hKYLEvx-ur-eutG9c2@k3QWhzYwpuiD
+             */
+//            connection = DriverManager.getConnection(
+//                    "jdbc:postgresql://tripalink-postgresql-dev.chrusssv7kt6.us-west-1.rds.amazonaws.com/tripalink",
+//                    "backend_service",
+//                    "Y]5hE]2]bJ(7?6-Y.tscb]#q#>f$\"uyr");
+
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/postgres",
-                    "madefu",
-                    "sasa");
+                    "jdbc:postgresql://tripalink-postgresql-prod.chrusssv7kt6.us-west-1.rds.amazonaws.com/tripalink",
+                    "backend_service",
+                    "P-gA*VEYDXCRKqs6ctZW8.uy3YMrpoFd");
+            
+            /*
+            * backend_service
+            * Y]5hE]2]bJ(7?6-Y.tscb]#q#>f$“uyr
+            * */
         }catch (SQLException e){
             System.out.println("Connection Failed");
             e.printStackTrace();

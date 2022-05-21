@@ -18,6 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
 //        String pwd  = pw.encode("123");
         //使用配置类的方式
 //        auth.inMemoryAuthentication().withUser("Admin").password(pwd).roles(new String[]{"Admin","Seller"});
@@ -29,7 +30,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * 不加这个类，会报
      * java.lang.IllegalArgumentException: There is no PasswordEncoder mapped for the id "null"
      * 因为系统会去寻找PasswordEncoder，这个类是必须要指定的
-     * @return
      */
     @Bean
     public static PasswordEncoder password(){

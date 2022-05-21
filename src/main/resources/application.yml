@@ -1,9 +1,30 @@
 server:
   port: 1111
 
-
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: true
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    use-generated-keys: true
+    auto-mapping-behavior: partial
+    auto-mapping-unknown-column-behavior: warning
+    default-executor-type: simple
+    default-statement-timeout: 120
+    default-fetch-size: 500
+    safe-row-bounds-enabled: false
+    map-underscore-to-camel-case: false
+    local-cache-scope: session
+    jdbc-type-for-null: other
+    lazy-load-trigger-methods: equals,clone,hashCode,toString
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+  type-handlers-package: com.madefu.spd1.mybatis.generator.type.handler
+  type-aliases-package: com.madefu.spd1.mybatis.generator.mapper
 
 spring:
+
   devtools:
     restart:
       enabled: true
@@ -14,9 +35,10 @@ spring:
 #      password: 123
 
   datasource:
-    username: ENC(Qn1O39gtgEehzsMhLocucsdIrASXbWRW8/o02HLEKTQ6xswb7knPJkYKIG/LKKQY)
-#    password: sasa
-    password: ENC(r0F+FWGMP3mcAzF/nRWO1aPWLX/Ib1fUcX+HzEpBHirXt9CM/HRscyB1r/hWqaqW)
+    username: madefu
+#    username: ENC(Qn1O39gtgEehzsMhLocucsdIrASXbWRW8/o02HLEKTQ6xswb7knPJkYKIG/LKKQY)
+    password: sasa
+#    password: ENC(r0F+FWGMP3mcAzF/nRWO1aPWLX/Ib1fUcX+HzEpBHirXt9CM/HRscyB1r/hWqaqW)
     # mvn jasypt:encrypt-value -Djasypt.encryptor.password=madefu -Djasypt.plugin.value=sasa
     # mvn jasypt:decrypt-value -Djasypt.encryptor.password=madefu -Djasypt.plugin.value=r0F+FWGMP3mcAzF/nRWO1aPWLX/Ib1fUcX+HzEpBHirXt9CM/HRscyB1r/hWqaqW
     # java -Djasypt.encryptor.password=madefu -jar spring-boot-application.jar

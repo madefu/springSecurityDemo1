@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.madefu.spd1.mybatis.generator.mapper.test_v0.TuseraccountpoMapper">
+  <select id="selectOneByUserName" parameterType="java.lang.String" resultType="BaseResultMap">
+    select
+      distinct
+    <include refid="Base_Column_List" />
+    from test_v0.t_user_account
+    where user_name=#{userName}
+  </select>
+</mapper>
